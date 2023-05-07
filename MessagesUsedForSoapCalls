@@ -3,7 +3,7 @@
 <holdRequest xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue" xmlns:ns2="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.resources.icsxpathfunctions.ICSInstanceTrackingFunctions" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:nsmpr6="http://www.oracle.com/2014/03/ic/integration/metadata" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:nsmpr2="http://xmlns.oracle.com/oxp/service/v2" xmlns:ns35="http://xmlns.oracle.com/pcbpel/adapter/opaque/" xmlns:nsmpr3="http://xmlns.oracle.com/types/Get_requestID/1682708704579/OutboundSOAPRequestDocument" xmlns:ns34="http://xmlns.oracle.com/cloud/staging/write" xmlns:nsmpr4="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadFile_REQUEST/types" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:ns33="http://xmlns.oracle.com/cloud/ics/file/v1/types" xmlns:nsmpr5="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteFile_REQUEST/types" xmlns:ns32="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteFile_REQUEST" xmlns:nsmpr0="http://xmlns.oracle.com/scheduler/types" xmlns:dvm="http://www.oracle.com/XSL/Transform/java/com.bea.wli.sb.functions.dvm.DVMFunctions" xmlns:nsmpr1="http://TargetNamespace.com/fileReference/ReadFile" xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:nstrgdfl="http://xmlns.oracle.com/types/HoldESSJobs/1683226943084/OutboundSOAPResponseDocument" xmlns:orajs1="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.JsExecutor_xpath329780801" xmlns:orajs0="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.JsExecutor_xpath86288" xmlns:tns="http://xmlns.oracle.com/scheduler" xmlns:nstrgmpr="http://xmlns.oracle.com/types/HoldESSJobs/1683226244571/OutboundSOAPRequestDocument" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns29="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadFile_REQUEST" xmlns="http://xmlns.oracle.com/scheduler">
   <nstrgmpr:Headers>
     <nstrgmpr:HTTPHeaders>
-      <nstrgmpr:Authorization>Basic c2F1cmFiaC5zaGFybWE6T3JhY2xlQDEyMw==</nstrgmpr:Authorization>
+      <nstrgmpr:Authorization>Basic c2F1cmFi2xlQDEyMw==</nstrgmpr:Authorization>
     </nstrgmpr:HTTPHeaders>
     <nstrgmpr:CustomSOAPHeaders>
       <wsa:MessageID>urn:uuid:36383839333438393330333435343934</wsa:MessageID>
@@ -17,7 +17,7 @@
   </nstrgmpr:Body>
 </holdRequest>
 
-The Below is the Message sent from SOAP UI, which works, after Ticking "Randomly Generate MessageID" from ws-a options.
+#The Below is the Message sent from SOAP UI, which works, after Ticking "Randomly Generate MessageID" from ws-a options.
 
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://xmlns.oracle.com/scheduler">
    <soapenv:Header/>
@@ -28,4 +28,15 @@ The Below is the Message sent from SOAP UI, which works, after Ticking "Randomly
    </soapenv:Body>
 </soapenv:Envelope>
 
+#The Below is the Error I am getting from OIC Fault Handler
 
+Fault:<soap-env:Fault xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+  <faultcode xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">soap:Server</faultcode>
+  <faultstring>A required header representing a Message Addressing Property is not present</faultstring>
+  <detail>
+    <ICSfaultVar />
+    <reason>CASDK-0033: Received a SOAP fault while invoking endpoint target: https://fa-etxt-dev7-saasfaprod1.fa.ocs.oraclecloud.com:443/ess/esswebservice. This indicates a processing exception on the service endpoint side. Please check service side logs to further diagnose the problem &lt;![CDATA[ Fault Code : wsa:MessageAddressingHeaderRequired Fault String : A required header representing a Message Addressing Property is not present ]]&gt; :Application Error</reason>
+    <operation>holdRequest</operation>
+    <request_payload />
+  </detail>
+</soap-env:Fault>
